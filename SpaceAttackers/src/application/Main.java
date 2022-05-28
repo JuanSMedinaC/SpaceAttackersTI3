@@ -29,6 +29,8 @@ public class Main extends Application {
 			currentStage.setWidth(700);
 			currentStage.show();
 			
+			firstLevelController.start();
+			
 			firstLevelController.load();
 			
 		}catch (IOException e) {
