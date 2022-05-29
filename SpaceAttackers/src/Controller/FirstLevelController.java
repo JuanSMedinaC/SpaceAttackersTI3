@@ -3,6 +3,7 @@ package Controller;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.CountDownLatch;
 
 import application.Main;
 import javafx.fxml.FXML;
@@ -14,11 +15,16 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import model.Alien;
+import model.MoveAliens;
 import model.Ship;
 
 public class FirstLevelController implements Initializable{
 	
 	private Main main;
+	
+	private CountDownLatch latch;
+	
+	private ArrayList<MoveAliens> alienTh;
 	
 	private GraphicsContext gc;
 	
@@ -33,6 +39,7 @@ public class FirstLevelController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		canvas1.setFocusTraversable(true);
 		gc = canvas1.getGraphicsContext2D();	
+		
 	}
 	
 	@FXML
@@ -44,6 +51,9 @@ public class FirstLevelController implements Initializable{
 			main.getGame().moveShipRight();
 			load();
 		}
+		else if(e.getCode()==KeyCode.SPACE) {
+			
+		}
 	}
 	
 	public void load() {
@@ -51,17 +61,36 @@ public class FirstLevelController implements Initializable{
 		ArrayList<Alien> aliens=main.getGame().getaliens();
 		shipImage= new Image(getClass().getResourceAsStream("../ui/ship.png"));
 		alienImage= new Image(getClass().getResourceAsStream("../ui/alien.png"));
-		gc.clearRect(0,0, 800, 600);
+		gc.clearRect(0,0, 700, 500);
 
 		for (int i=0; i<aliens.size();i++) {
-			gc.drawImage(alienImage, aliens.get(i).getPosX(), aliens.get(i).getPosY());
+			gc.drawImage(alienImage, aliens.get(i).getPosX(), aliens.get(i).getPosY(), aliens.get(i).getWidth(),aliens.get(i).getHeight());
 		}
 		
-		gc.drawImage(shipImage, ship.getPosX(), ship.getPosY());
+		gc.drawImage(shipImage, ship.getPosX(), ship.getPosY(),ship.getWidth(),ship.getHeight());
+	}
+	
+	
+	public void start() {
+		alienTh=new ArrayList<>();
+		Ship ship=main.getGame().getShip();
+		ArrayList<Alien> aliens=main.getGame().getaliens();
+        CountDownLatch latch = new CountDownLatch(1);
+        
+		for (int i = 0 ; i<aliens.size(); i++) {
+			alienTh.add(new MoveAliens(this, latch,i));
+			alienTh.get(i).start();
+		}
+		latch.countDown();
+
 	}
 	
 	public void setMain(Main main) {
 		this.main=main;
+	}
+	
+	public Main getMain() {
+		return main;
 	}
 
 }

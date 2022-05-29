@@ -29,6 +29,8 @@ public class Main extends Application {
 			currentStage.setWidth(700);
 			currentStage.show();
 			
+			firstLevelController.start();
+			
 			firstLevelController.load();
 			
 		}catch (IOException e) {
@@ -43,7 +45,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		game=new Game();
-		game.createObjects(2);
+		game.createObjects(7);
 		launch(args);
 	}
 }

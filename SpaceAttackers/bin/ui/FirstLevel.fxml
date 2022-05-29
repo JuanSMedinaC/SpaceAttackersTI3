@@ -4,11 +4,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#movement" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FirstLevelController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#movement" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FirstLevelController">
    <center>
-      <Pane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Canvas fx:id="canvas1" height="600.0" width="800.0" />
+            <Canvas fx:id="canvas1" height="500.0" width="700.0" />
          </children>
       </Pane>
    </center>
