@@ -61,10 +61,10 @@ public class FirstLevelController implements Initializable{
 		ArrayList<Alien> aliens=main.getGame().getaliens();
 		shipImage= new Image(getClass().getResourceAsStream("../ui/ship.png"));
 		alienImage= new Image(getClass().getResourceAsStream("../ui/alien.png"));
-		gc.clearRect(0,0, 800, 600);
+		gc.clearRect(0,0, 700, 500);
 
 		for (int i=0; i<aliens.size();i++) {
-			gc.drawImage(alienImage, aliens.get(i).getPosX(), aliens.get(i).getPosY());
+			gc.drawImage(alienImage, aliens.get(i).getPosX(), aliens.get(i).getPosY(), aliens.get(i).getWidth(),aliens.get(i).getHeight());
 		}
 		
 		gc.drawImage(shipImage, ship.getPosX(), ship.getPosY(),ship.getWidth(),ship.getHeight());
@@ -78,7 +78,7 @@ public class FirstLevelController implements Initializable{
         CountDownLatch latch = new CountDownLatch(1);
         
 		for (int i = 0 ; i<aliens.size(); i++) {
-			alienTh.add(new MoveAliens(this, latch));
+			alienTh.add(new MoveAliens(this, latch,i));
 			alienTh.get(i).start();
 		}
 		latch.countDown();
@@ -87,6 +87,10 @@ public class FirstLevelController implements Initializable{
 	
 	public void setMain(Main main) {
 		this.main=main;
+	}
+	
+	public Main getMain() {
+		return main;
 	}
 
 }

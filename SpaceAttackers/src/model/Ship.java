@@ -49,7 +49,7 @@ public class Ship {
 	}
 	
 	public void moveRight() {
-		if(this.posX+width<700) {
+		if(this.posX+width+deltaX<700) {
 			this.posX+=deltaX;	
 		}
 		

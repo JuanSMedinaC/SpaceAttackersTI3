@@ -45,7 +45,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		game=new Game();
-		game.createObjects(2);
+		game.createObjects(7);
 		launch(args);
 	}
 }

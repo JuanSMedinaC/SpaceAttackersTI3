@@ -21,12 +21,8 @@ public class Game {
 	}
 	
 	public void createObjects(int alienNum) {
-		if (alienNum>10) {
-			
-		}else {
-			
-		}
-		int diff=800/alienNum;
+		
+		int diff=(700/alienNum)-5;
 		
 		int last=70;
 		for (int i=0; i<alienNum;i++) {
