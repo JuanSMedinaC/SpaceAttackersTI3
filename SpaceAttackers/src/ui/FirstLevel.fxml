@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#movement" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FirstLevelController">
    <center>
       <Pane prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <Canvas fx:id="canvas1" height="500.0" width="700.0" />
+            <Label fx:id="livesLabel" layoutX="14.0" layoutY="14.0" prefHeight="23.0" prefWidth="80.0" text="Lives: " textFill="#0e9710">
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>

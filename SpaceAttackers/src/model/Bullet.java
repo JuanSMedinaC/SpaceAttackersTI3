@@ -4,11 +4,13 @@ public class Bullet {
 	private int posY;
 	private int posX;
 	private int deltaY;
+	private boolean active;
 	
 	public Bullet(int posX,int posY) {
 		this.posY=posY;
 		this.posX=posX;
-		this.deltaY=20;
+		this.deltaY=2;
+		active=true;
 	}
 
 	public int getPosY() {
@@ -36,8 +38,15 @@ public class Bullet {
 	}
 	
 	public void increaseHeight() {
-		posY+=deltaY;
+		posY-=deltaY;
 	}
 	
+	public void deactive() {
+		active=false;
+	}
+	
+	public boolean isActive() {
+		return active;
+	}
 	
 }

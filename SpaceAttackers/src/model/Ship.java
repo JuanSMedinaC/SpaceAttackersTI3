@@ -6,14 +6,16 @@ public class Ship {
 	private int posX;
 	private int posY;
 	private int deltaX;
-	
+	private int lives;
+	private boolean reduced;
 	public Ship() {
 		this.width = 48;
 		this.height = 48;
 		this.posX = 350-width/2;
 		this.posY = 450-height;
 		this.deltaX=10;
-		
+		lives=3;
+		reduced=false;
 	}
 
 	public int getWidth() {
@@ -59,6 +61,27 @@ public class Ship {
 			this.posX-=deltaX;	
 		}
 		
+	}
+	
+	public void reduceLife() {
+		if (reduced==false) {
+			reduced=true;
+			lives--;
+			System.out.println("Redujo");
+			new Thread(() -> {
+	            try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            reduced=false;
+	        }).start();
+		}
+	}
+	
+	public int getLifes() {
+		return lives;
 	}
 	
 	
