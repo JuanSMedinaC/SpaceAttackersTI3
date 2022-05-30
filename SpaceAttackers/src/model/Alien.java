@@ -9,15 +9,21 @@ public class Alien {
 	private int deltaX;
 	private int deltaY;
 	private boolean left;
+	private boolean alive;
+	private int firstPosX;
+	private int firstPosY;
 	
 	public Alien(int posX,int posY) {
 		this.width = 56;
 		this.height = 56;
 		this.posX = posX;
 		this.posY = posY;
+		this.firstPosX = posX;
+		this.firstPosY = posY;
 		this.deltaX=10;
-		this.deltaY=40;
+		this.deltaY=20;
 		left=true;
+		alive=true;
 	}
 
 	public int getWidth() {
@@ -66,6 +72,10 @@ public class Alien {
 		return left;
 	}
 	
+	public void goLeft() {
+		left=true;
+	}
+	
 	public void switchSide() {
 		if (left==true) {
 			left=false;
@@ -79,5 +89,20 @@ public class Alien {
 	public void goDown() {
 		posY+=deltaY;
 	}
+	
+	public void kill() {
+		alive=false;
+	}
+	
+	public boolean isAlive() {
+		return alive;
+	}
+	
+	public void resetPos() {
+		posY=firstPosY;
+		posX=firstPosX;
+	}
+	
+	
 	
 }
